@@ -1,0 +1,230 @@
+﻿
+:root {
+    --bg: #1C1C1E;
+    --lightbg: #363636;
+    --lighterbg: #494949
+}
+
+body {
+    color: white;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #3a3a3a 450px), repeating-linear-gradient(#373737, #2c2c2c);
+    background-color: #1f1f1f;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+p {
+    margin: 0;
+}
+
+h1 {
+
+}
+
+h2 {
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 1.1px;
+}
+
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+input {
+    padding: 4px 10px;
+    font-size: 1.2em;
+    color: white;
+    background-color: var(--lighterbg);
+    border-radius: 4px;
+}
+
+button {
+    padding: 5px 10px;
+    font-size: 1.2em;
+    color: white;
+    background-color: var(--lightbg);
+    border-radius: 4px;
+    transition: all linear .05s;
+}
+
+    button:hover {
+        cursor: pointer;
+        outline: 2px solid white;
+    }
+
+.error {
+    color: red;
+    font-size: 1.4em;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+}
+
+.circularBtn {
+    padding: 6px;
+    border-radius: 24px;
+}
+
+/* Main Media Page */
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0px;
+    margin: 40px 10px;
+    background-color: var(--bg);
+    border-radius: 8px;
+}
+
+.actionBar {
+    width: 92%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+    .actionBar div {
+        display: flex;
+        align-items: center;
+    }
+
+    .actionBar div:nth-child(n) {
+        margin: 0 5px;
+    }
+
+    .actionBar div:first-child {
+        margin-right: auto;
+    }
+
+    .actionBar div:last-child {
+        margin-left: auto;
+    }
+
+.mediaGrid {
+    width: 92%;
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px 20px;
+}
+
+.mediaItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 150px;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #363636;
+    border-radius: 8px;
+    transition: all ease-in-out 2s;
+    transition: outline linear .05s;
+    z-index: 10;
+}
+
+.mediaItem:hover {
+    cursor: pointer;
+    outline: 2px solid white;
+}
+
+.mediaItemsContainer {
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: 10px;
+    z-index: 20;
+}
+
+.mediaActions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 5px 0;
+    background-color: #1c1c1ec7;
+}
+
+.mediaActions a i {
+    font-size: 1.5em;
+    margin: 0 4px;
+}
+
+.mediaTitle {
+    width: 100%;
+    padding: 5px 0;
+    background-color: #1c1c1ec7;
+    text-align: center;
+}
+
+/* Add Page */
+
+.inputForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputFormRow {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+    .inputFormRow label {
+        font-size: 1.1em;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+
+    .inputFormRow input {
+    }
+
+    .inputFormRow .error {
+        margin: 3px;
+        text-align: center;
+    }
+
+.inputForm button[type="submit"]{
+    margin-top: 40px;
+}
+
+/* Delete Form */
+
+.deleteForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.deleteFormRow {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+    .deleteFormRow label {
+        margin-bottom: 10px;
+        font-size: 1.2em;
+        font-weight: 500;
+        letter-spacing: 1px;
+    }
+
+    .deleteFormRow p {
+    }
+
+    .deleteFormRow img {
+        width: 100%;
+        height: 300px;
+        border-radius: 12px;
+    }
+
+.deleteForm button[type="submit"] {
+    margin-top: 40px;
+}

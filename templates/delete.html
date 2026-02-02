@@ -1,0 +1,47 @@
+﻿{% extends 'layout.html' %}
+
+{% block body %}
+
+
+
+<div class="contentContainer">
+    <div class="actionBar">
+        <div>
+            <button onclick="window.location.href='{{url_for('index')}}';"> 
+                <i class="fa-solid fa-arrow-left" style="font-size: .8em;"></i> Return
+            </button>
+        </div>
+
+        <div>
+            <h1> Delete This Media? </h1>
+        </div>
+
+        <div></div>
+    </div>
+
+    <form method="post" action="{{ url_for('delete', id=item['id']) }}">>
+        <div class="deleteForm">
+
+            <div class="deleteFormRow">
+                <label>Media Title</label>
+                <p>{{item['title']}}</p>
+            </div>
+
+            <div class="deleteFormRow">
+                <label>Media URL</label>
+                <p>{{item['url'] or "N/A"}}</p>
+            </div>
+
+            <div class="deleteFormRow">
+                <label>Media Img</label>
+                <img src="{{item['imgUrl'] or "/static/imgs/blank.png"}}">
+            </div>
+
+            <button type="submit">Submit</button>
+
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

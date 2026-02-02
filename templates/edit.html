@@ -1,0 +1,48 @@
+﻿{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="contentContainer">
+    <div class="actionBar">
+        <div>
+            <button onclick="window.location.href='{{url_for('index')}}';"> 
+                <i class="fa-solid fa-arrow-left" style="font-size: .8em;"></i> Return
+            </button>
+        </div>
+
+        <div>
+            <h1> Edit Media Item </h1>
+        </div>
+
+        <div></div>
+    </div>
+
+    <form method="post" action="{{ url_for('edit', id=item['id']) }}">
+        <div class="inputForm">
+
+            <div class="inputFormRow">
+                <label>Media Title</label>
+                <input name="title" placeholder="Enter the title here..." value="{{item['title']}}" required>
+                <p class="error" id="error-title" style="display: none;"></p>
+            </div>
+
+            <div class="inputFormRow">
+                <label>Media URL</label>
+                <input name="url" placeholder="Enter the URL here..." value="{{item['url']}}">
+                <p class="error" id="error-url" style="display: none;"></p>
+            </div>
+
+            <div class="inputFormRow">
+                <label>Media Img URL</label>
+                <input name="imgUrl" placeholder="Enter the Img URL here..." value="{{item['imgUrl']}}">
+                <p class="error" id="error-imgurl" style="display: none;"></p>
+            </div>
+
+            <button type="submit">Submit</button>
+
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

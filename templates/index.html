@@ -1,0 +1,62 @@
+﻿{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="contentContainer">
+    <div class="actionBar">
+        <div>
+            <button onclick="window.location.href='{{url_for('add')}}';"> <i class="fa-solid fa-plus" style="font-size: .8em;"></i> Add New</button>
+        </div>
+
+        <div>
+            <h1> Your Media </h1>
+        </div>
+
+        <div>
+            <button class="circularBtn"><i class="fa-solid fa-filter"></i></button>
+            <div><input class="searchInput" placeholder="Search..."> <button><i class="fa-solid fa-magnifying-glass"></i></button> </div>
+        </div>
+    </div>
+
+    <div class="mediaGrid">
+
+        {% for item in media%}
+
+        <div class="mediaItem" style="background-image: url({{item['imgUrl']}})" onclick="window.open('{{item['url']}}', '_blank')">
+            <div class="mediaItemsContainer">
+                <div class="mediaActions" style="display: none;">
+                    <a href="{{url_for('edit', id=item['id'])}}" onclick="event.stopPropagation();" ><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="{{url_for('delete', id=item['id'])}}" onclick="event.stopPropagation();" ><i class="fa-solid fa-trash"></i></a>
+                </div>
+
+                <h2 class="mediaTitle">{{item['title']}}</h2>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+
+<script name="Listeners">
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // Shows actions when hovering over item
+        document.querySelectorAll(".mediaItem").forEach(function (item, idx) {
+            item.addEventListener("mouseover", function () {
+                var bar = item.getElementsByClassName("mediaActions")[0]
+                bar.style.display = "";
+            })
+
+            item.addEventListener("mouseout", function () {
+                var bar = item.getElementsByClassName("mediaActions")[0]
+                bar.style.display = "none";
+            })
+        })
+
+    })
+
+</script>
+
+{% endblock %}
