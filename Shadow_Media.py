@@ -2,7 +2,6 @@
 import os
 from dotenv import load_dotenv
 from flask import *
-from python import *
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 
