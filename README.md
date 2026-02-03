@@ -7,6 +7,6 @@ Users can store links and organise links to external online resources. Allowing 
 - [x] View Media Items
 - [x] Create, Edit and Delete Media Items
 - [ ] Auto-Fetch Preview Image
-- [ ] Search Items
+- [x] Search Items
 - [ ] Filter Items + Custom User-Defined Tags
 - [ ] Sort Items into User-Defined Collections
