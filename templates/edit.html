@@ -38,11 +38,71 @@
                 <p class="error" id="error-imgurl" style="display: none;"></p>
             </div>
 
+            <div class="inputFormRow">
+                <label>Media Preview</label>
+                <img id="imgPreview" src="/static/imgs/blank.png">
+            </div>
+
             <button type="submit">Submit</button>
 
         </div>
     </form>
 
 </div>
+
+<script name="Get Preview Image">
+
+    document.addEventListener("DOMContentLoaded", getPreview)
+
+    document.getElementsByName("imgUrl")[0].addEventListener("change", getPreview)
+    document.getElementsByName("url")[0].addEventListener("change", autoFetchPreview)
+
+    function getPreview() {
+        var imgUrl = document.getElementsByName("imgUrl")[0].value
+        var imgPreview = document.getElementById("imgPreview")
+
+        if (!imgUrl) {
+            imgUrl = "/static/imgs/blank.png"
+        }
+
+        imgPreview.src = imgUrl
+    }
+
+    function autoFetchPreview() {
+        var urlInput = document.getElementsByName("url")[0]
+        var url = urlInput.value
+
+        var imgUrlInput = document.getElementsByName("imgUrl")[0]
+        var imgUrl = imgUrlInput.value
+
+        if (url && !imgUrl) {
+
+            if (!url.includes("https://")) {
+                url = "https://" + url
+                urlInput.value = url
+            }
+
+            fetch('/getPreviewImg', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    url: url
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    imgUrlInput.value = data.url
+                    getPreview()
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+
+        }
+    }
+
+</script>
 
 {% endblock %}

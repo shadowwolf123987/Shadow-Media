@@ -176,6 +176,7 @@ button {
 }
 
     .inputFormRow label {
+        margin-bottom: 5px;
         font-size: 1.1em;
         font-weight: 400;
         letter-spacing: 1px;
@@ -187,6 +188,12 @@ button {
     .inputFormRow .error {
         margin: 3px;
         text-align: center;
+    }
+
+    .inputFormRow img {
+        width: 100%;
+        height: 300px;
+        border-radius: 12px;
     }
 
 .inputForm button[type="submit"]{

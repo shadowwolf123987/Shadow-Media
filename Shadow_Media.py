@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 from flask import *
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
+import requests
+from bs4 import BeautifulSoup
 
 # App Setup
 
@@ -119,5 +121,39 @@ def delete(id):
         cursor.close()
 
         return redirect("/")
+
+# Logic Functions
+
+# Gets IMG via provided URL
+@app.route('/getPreviewImg', methods = ['POST'])
+def getPreviewImg():
+    
+    # Get Data
+    data = request.get_json()
+    url = data.get("url", "") or ""
+    imgUrl = ""
+
+    # Try get Preview Img
+    try:
+        if url:
+            html = requests.get(url).text
+
+            parsedHtml = BeautifulSoup(html, features='lxml')
+
+            imgUrl = parsedHtml.find("meta", property="og:image").get("content")
+
+            if imgUrl[0] == "/":
+                imgUrl = url + imgUrl
+
+    except Exception as e:
+        print(e)
+        imgUrl = ""
+
+    print(imgUrl)
+
+    return jsonify({
+        "url": imgUrl
+    })
+
 
 app.run(debug=True)
