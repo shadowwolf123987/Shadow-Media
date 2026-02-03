@@ -1,9 +1,13 @@
 ﻿
+# Imports
+
 import os
 from dotenv import load_dotenv
 from flask import *
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
+
+# App Setup
 
 app = Flask(__name__)
 
@@ -18,6 +22,8 @@ app.config['MYSQL_DB'] = os.getenv('SQL_DB')
 
 mysql = MySQL(app)
 
+# Flask Pages
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
@@ -25,9 +31,13 @@ def favicon():
 
 @app.route('/')
 def index():
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    
+    query = request.args.get("query") or ""
 
-    cursor.execute("SELECT * FROM media")
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    
+    cursor.execute(f"SELECT * FROM media WHERE Title LIKE '%{query}%'; ")
+
     media = cursor.fetchall()
 
     cursor.close()

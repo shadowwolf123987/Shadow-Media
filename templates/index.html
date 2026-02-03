@@ -14,7 +14,7 @@
 
         <div>
             <button class="circularBtn"><i class="fa-solid fa-filter"></i></button>
-            <div><input class="searchInput" placeholder="Search..."> <button><i class="fa-solid fa-magnifying-glass"></i></button> </div>
+            <div><input id="searchInput" class="searchInput" placeholder="Search..."> <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button> </div>
         </div>
     </div>
 
@@ -37,6 +37,32 @@
 
     </div>
 </div>
+
+<script name="Search/Filters">
+    // Adds Listeners for Search
+    document.getElementById("searchInput").addEventListener("keydown", function (e) {
+        if (e.key == 'Enter') {
+            filter()
+        }
+    })
+    document.getElementById("searchBtn").addEventListener("click", filter)
+
+    // Sets URL params for both Search and filter features
+    function filter() {
+        // Gets Values
+        query = document.getElementById("searchInput").value;
+
+        // Clears URL Params
+        url = "/"
+
+        // Adds Search Param
+        if (query) {
+            url = url + "?query=" + query
+        }
+
+        window.location.href = url
+    }
+</script>
 
 <script name="Listeners">
 
