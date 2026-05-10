@@ -44,7 +44,7 @@ def index():
 
     cursor.close()
 
-    return render_template("index.html", media=media)
+    return render_template("index.html", query=query, media=media)
 
 @app.route('/add', methods = ['GET','POST'])
 def add():

@@ -1,4 +1,4 @@
-# Use Case
+﻿# Use Case
 
 Users can store links and organise links to external online resources. Allowing for simple management of media items. EG: Keeping track of your watched TV shows across multiple streaming sites, and allowing you to resume watching by clicking the item
 
